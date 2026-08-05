@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 from joblib import load
 from pathlib import Path
 
-# ----------------------------- Load artifacts -----------------------------
+
 MODEL = load(Path(__file__).parents[0]/"models/credit_risk_prediction_model.joblib")
 FEATURES = load(Path(__file__).parents[0]/"models/feature_columns.joblib")
-ENCODERS = load(Path(__file__).parents[0]/"models/label_encoders.joblib")  # {col: fitted LabelEncoder}
+ENCODERS = load(Path(__file__).parents[0]/"models/label_encoders.joblib")  
 EXPLAINER = shap.TreeExplainer(MODEL)
 
 
@@ -19,7 +19,7 @@ def encode(col, value):
     return int(ENCODERS[col].transform([value])[0])
 
 
-# ----------------------------- Page setup -----------------------------
+
 st.set_page_config(page_title="BNPL Credit Risk Scanner", page_icon="💳", layout="wide")
 
 st.markdown("""
@@ -51,7 +51,7 @@ st.title("💳 BNPL Credit Risk Scanner")
 st.markdown('<p class="app-tagline">Estimate a customer\'s default probability on a Buy-Now-Pay-Later purchase.</p>', unsafe_allow_html=True)
 st.divider()
 
-# ----------------------------- Sidebar inputs -----------------------------
+
 with st.sidebar:
     st.header("Applicant Details")
 
@@ -79,7 +79,7 @@ with st.sidebar:
     st.markdown("")
     run_prediction = st.button("Scan Applicant", type="primary", use_container_width=True)
 
-# ----------------------------- Prediction -----------------------------
+
 if not run_prediction:
     st.info("Fill in the applicant's details in the sidebar, then click **Scan Applicant**.")
 else:
@@ -139,7 +139,7 @@ else:
         progress.progress(pct)
         time.sleep(0.003)
 
-    # ----------------------------- SHAP explanation -----------------------------
+  
     st.divider()
     st.header("What's driving this score")
     st.caption("Bars show how much each factor pushed the prediction toward or away from default.")
