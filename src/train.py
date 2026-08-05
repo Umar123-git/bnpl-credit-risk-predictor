@@ -17,8 +17,7 @@ def load_and_engineer(dataset_path):
     df = pd.read_csv(dataset_path)
     df = df.drop("user_id", axis=1)
 
-    # fix: one LabelEncoder PER column, saved so the app can reuse
-    # the exact same mapping at inference time.
+
     encoders = {}
     for col in CATEGORICAL_COLS:
         le = LabelEncoder()
