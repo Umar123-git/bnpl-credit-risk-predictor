@@ -48,9 +48,11 @@ html, body, [class*="css"]  { font-family: 'Inter', sans-serif; font-size: 16px;
 
 /* headings */
 h1 { font-family: 'Sora', sans-serif !important; font-size: 2.3rem !important; font-weight: 800 !important;
+     letter-spacing: -0.02em; color: #eae6ff !important; }
+.gradient-text {
      background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
-     -webkit-background-clip: text; background-clip: text; color: transparent !important;
-     letter-spacing: -0.02em; }
+     -webkit-background-clip: text; background-clip: text;
+     -webkit-text-fill-color: transparent; color: transparent; }
 h2 { font-family: 'Sora', sans-serif !important; font-size: 1.4rem !important; font-weight: 700 !important; color: #eae6ff !important; }
 h3 { font-family: 'Sora', sans-serif !important; font-size: 1.1rem !important; font-weight: 600 !important; color: #cfc6f5 !important; }
 p, li, label, .stMarkdown { font-size: 0.95rem !important; line-height: 1.55 !important; color: #b9b6d6; }
@@ -154,7 +156,7 @@ st.markdown(
     '<span style="color:#9791c2; font-size:.85rem; letter-spacing:.1em; text-transform:uppercase;">live scoring model</span></div>',
     unsafe_allow_html=True
 )
-st.title("💳 BNPL Credit Risk Scanner")
+st.markdown('<h1>💳 <span class="gradient-text">BNPL Credit Risk Scanner</span></h1>', unsafe_allow_html=True)
 st.markdown('<p class="app-tagline">Estimate a customer\'s default probability on a Buy-Now-Pay-Later purchase — instantly.</p>', unsafe_allow_html=True)
 st.write("")
 
