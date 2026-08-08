@@ -8,7 +8,7 @@ import shap
 import matplotlib.pyplot as plt
 from joblib import load
 
-# ----------------------------- Load artifacts -----------------------------
+
 MODEL = load("models/credit_risk_prediction_model.joblib")
 FEATURES = load("models/feature_columns.joblib")
 ENCODERS = load("models/label_encoders.joblib")  # {col: fitted LabelEncoder}
@@ -20,7 +20,7 @@ def encode(col, value):
     return int(ENCODERS[col].transform([value])[0])
 
 
-# ----------------------------- Page setup -----------------------------
+
 st.set_page_config(page_title="BNPL Credit Risk Scanner", page_icon="💳", layout="wide")
 
 st.markdown("""
@@ -160,7 +160,7 @@ st.markdown('<h1>💳 <span class="gradient-text">BNPL Credit Risk Scanner</span
 st.markdown('<p class="app-tagline">Estimate a customer\'s default probability on a Buy-Now-Pay-Later purchase — instantly.</p>', unsafe_allow_html=True)
 st.write("")
 
-# ----------------------------- Sidebar inputs -----------------------------
+
 with st.sidebar:
     st.header("🧾 Applicant Details")
 
@@ -188,7 +188,7 @@ with st.sidebar:
     st.markdown("")
     run_prediction = st.button("⚡ Scan Applicant", type="primary", use_container_width=True)
 
-# ----------------------------- Prediction -----------------------------
+
 if not run_prediction:
     st.markdown(
         '<div class="section-card">🔎 Fill in the applicant\'s details in the sidebar, then click '
@@ -254,7 +254,6 @@ else:
     if level == "Low risk":
         st.balloons()
 
-    # ----------------------------- SHAP explanation -----------------------------
     st.write("")
     st.header("🧠 What's driving this score")
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
